@@ -37,5 +37,5 @@ composer require vlucas/phpdotenv
  ### Important: Do not include quotes ' or " around the values.
 
 ## 4. Run the Project
- Open your browser and navigate to:
- http://localhost/<your-project-directory>/public
+ Open your browser and navigate to: `http://localhost/<your-project-directory>/public`
+
