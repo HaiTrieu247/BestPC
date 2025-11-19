@@ -24,16 +24,21 @@ composer require google/apiclient
 composer require facebook/graph-sdk
 composer require vlucas/phpdotenv
 ```
+---
 
 ## 3. Setup Google and Facebook OAuth
 1. Create your own Google and Facebook Client ID and Client Secret.
 2. In the project root, create a .env file with the following content:
-    GOOGLE_CLIENT_ID=your-google-client-id
-    GOOGLE_CLIENT_SECRET=your-google-client-secret
-    FACEBOOK_CLIENT_ID=your-facebook-client-id
-    FACEBOOK_CLIENT_SECRET=your-facebook-client-secret
-    # Important: Do not include quotes ' or " around the values.
+ ```env
+ GOOGLE_CLIENT_ID=your-google-client-id
+ GOOGLE_CLIENT_SECRET=your-google-client-secret
+ FACEBOOK_CLIENT_ID=your-facebook-client-id
+ FACEBOOK_CLIENT_SECRET=your-facebook-client-secret
+ ```
+ ### Important: Do not include quotes ' or " around the values.
+ 
+---
 
 ## 4. Run the Project
-    Open your browser and navigate to:
-    http://localhost/<your-project-directory>/public
+ Open your browser and navigate to: `http://localhost/<your-project-directory>/public`
+
