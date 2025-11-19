@@ -73,7 +73,7 @@
                             <tbody>
                                 <?php foreach($orders as $order): ?>
                                     <tr>
-                                        <td><a href="index.php?route=view-detail&id=<?php echo urlencode($order['product_id']); ?>"><img src="images/products/<?php echo htmlspecialchars($order['Pimage']); ?>" alt="<?php echo htmlspecialchars($order['Pname']); ?>" width="100"></a></td>
+                                        <td><a href="index.php?route=view-detail&id=<?php echo urlencode($order['product_id']); ?>"><img src="/mywebsite/storage/uploads/<?php echo htmlspecialchars($order['Pimage']); ?>" alt="<?php echo htmlspecialchars($order['Pname']); ?>" width="100"></a></td>
                                         <td><a style="text-decoration: none; color: black;" href="index.php?route=view-detail&id=<?php echo urlencode($order['product_id']); ?>"><?php echo htmlspecialchars($order['Pname']); ?></a></td>
                                         <td><?php echo number_format($order['product_price'], 0, ',', '.'); ?>đ</td>
                                         <td><?php echo htmlspecialchars($order['quantity']); ?></td>

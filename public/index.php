@@ -240,6 +240,22 @@ switch ($route) {
         } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'] ?? null;
             if (isset($_POST['action']) && $_POST['action'] === 'edit-product') {
+                $imageDir = __DIR__ . '/../storage/uploads/';
+                $typename = strtolower($controller->getTypeName($_POST['type_id'] ?? null));
+                $imageDir .= $typename . '/';
+                if (!is_dir($imageDir)) {
+                    mkdir($imageDir, 0755, true);
+                }
+                $file = $_FILES['Pimage'] ?? null;
+                if(isset($file) && $file['error'] === UPLOAD_ERR_OK) {
+                    $tmpName = $file['tmp_name'];
+                    $originalName = basename($file['name']);
+                    $targetPath = $imageDir . $originalName;
+                    move_uploaded_file($tmpName, $targetPath);
+                    $_POST['Pimage'] = $typename . '/' . $originalName;
+                } else {
+                    $_POST['Pimage'] = null;
+                }
                 $controller->editProduct($id, $_POST);
             } else{
                 // Handle adding to cart logic here
@@ -464,6 +480,22 @@ switch ($route) {
         } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $action = $_POST['action'] ?? null;
             if (isset($action) && $action === 'add-product') {
+                $imageDir = __DIR__ . '/../storage/uploads/';
+                $typename = strtolower($controller->getTypeName($_POST['type_id'] ?? null));
+                $imageDir .= $typename . '/';
+                if (!is_dir($imageDir)) {
+                    mkdir($imageDir, 0755, true);
+                }
+                $file = $_FILES['Pimage'] ?? null;
+                if(isset($file) && $file['error'] === UPLOAD_ERR_OK) {
+                    $tmpName = $file['tmp_name'];
+                    $originalName = basename($file['name']);
+                    $targetPath = $imageDir . $originalName;
+                    move_uploaded_file($tmpName, $targetPath);
+                    $_POST['Pimage'] = $typename . '/' . $originalName;
+                } else {
+                    $_POST['Pimage'] = null;
+                }
                 $productData = [
                     'Pname' => $_POST['Pname'] ?? null,
                     'Pdescription' => $_POST['Pdescription'] ?? null,

@@ -62,7 +62,7 @@
                         <tbody>
                             <?php foreach ($carts as $item) : ?>
                                 <tr>
-                                    <td><a href="index.php?route=view-detail&id=<?php echo urlencode($item['product_id']); ?>"><img src="images/products/<?php echo htmlspecialchars($item['Pimage']); ?>" alt="<?php echo htmlspecialchars($item['Pname']); ?>" width="100"></a></td>
+                                    <td><a href="index.php?route=view-detail&id=<?php echo urlencode($item['product_id']); ?>"><img src="/mywebsite/storage/uploads/<?php echo htmlspecialchars($item['Pimage']); ?>" alt="<?php echo htmlspecialchars($item['Pname']); ?>" width="100"></a></td>
                                     <td><a style="text-decoration: none; color: black;" href="index.php?route=view-detail&id=<?php echo urlencode($item['product_id']); ?>"><?php echo htmlspecialchars($item['Pname']); ?></a></td>
                                     <td><?php echo number_format($item['price'], 0, ',', '.'); ?>đ</td>
                                     <td>

@@ -32,7 +32,7 @@
         <div class="container">
             <div class="d-grid gap-4" style="grid-template-columns: 1fr 2fr;">
                 <div>
-                    <img src="/mywebsite/public/images/products/<?php echo htmlspecialchars($image); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($name); ?>" class="img-fluid">
+                    <img src="/mywebsite/storage/uploads/<?php echo htmlspecialchars($image); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($name); ?>" class="img-fluid">
                 </div>
                 <div>
                     <h1><?php echo htmlspecialchars($name); ?></h1>

@@ -57,7 +57,7 @@ fetch("index.php?route=live-search&q=" + encodeURIComponent(keyword))
         if (data.length > 0) {
             data.forEach(item => {
                 html += `<div class="search-item" data-id="${item.Pid}">
-                        <img src="images/products/${item.Pimage}" width="40">
+                        <img src="/mywebsite/storage/uploads/${item.Pimage}" width="40">
                         <span>${item.Pname}</span>
                     </div>`;
             });

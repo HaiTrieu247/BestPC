@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form action="index.php?route=view-products-by-type" method="POST">
+                <form action="index.php?route=view-products-by-type" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="add-product">
                     <input type="hidden" name="type_id" value="<?php echo htmlspecialchars($typeId); ?>">
                     <input type="hidden" name="type_name" value="<?php echo htmlspecialchars($type); ?>">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <label>Image</label>
-                        <input type="text" name="Pimage" class="form-control" placeholder="Image URL" required>
+                        <input type="file" name="Pimage" class="form-control" accept="image/*" required>
                     </div>
                     <div class="mb-3">
                         <label>Price</label>

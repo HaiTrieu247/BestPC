@@ -12,7 +12,7 @@
 
 <div class="col-md-3 mb-4 d-flex">
     <div class="card shadow-sm border-0 card-height-fix">
-        <img src="images/products/<?php echo htmlspecialchars($Pimage); ?>" 
+        <img src="/mywebsite/storage/uploads/<?php echo htmlspecialchars($Pimage); ?>" 
              class="card-img-top" 
              alt="<?php echo htmlspecialchars($Pname); ?>">
         <div class="card-body d-flex flex-column text-center">

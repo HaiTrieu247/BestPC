@@ -203,4 +203,8 @@ class AdminController {
         $productId = $this->productModel->addProduct($productData);
         $this->storeModel->addProductToStores($productId);
     }
+
+    public function getTypeName($typeId){
+        return $this->productModel->convertToType($typeId);
+    }
 }

@@ -122,4 +122,8 @@ class ProductController {
     public function changeProductStock($productId, $storeName, $newStock) {
         $this->storeModel->updateProductStock($productId, $storeName, $newStock);
     }
+
+    public function getTypeName($typeId) {
+        return $this->productModel->convertToType($typeId);
+    }
 }
