@@ -1,0 +1,11 @@
+# =========================================
+# PHP & Composer Project .gitignore
+# =========================================
+
+# Ignore Composer dependencies
+/vendor/
+composer.lock
+composer.json
+.vscode/
+/storage/uploads
+.env

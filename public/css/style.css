@@ -1,0 +1,135 @@
+body{
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.external{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(218, 10, 10);
+    align-items: center;
+    gap: 40px;
+    padding: 6px;
+}
+
+.external a{
+    text-decoration: none;
+    color: white;
+    font-weight: 20px;
+}
+/* 
+main{
+    padding: 0px 150px;
+} */
+
+.carousel-titles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    display:flex;
+    align-items: stretch;
+    gap:8px;
+    background:#f6f4f4;
+    height: 40px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    width:650px;
+    margin: 0;
+}
+.search input {
+    background: transparent;
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    padding: 5px 15px;
+}
+.search button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f12525;
+    color: white;
+    padding: 10px 16px;
+    cursor: pointer;
+    gap: 6px;
+    border-radius: 4px;
+    border: none;
+    width: fit-content;
+    height: auto;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.search button:hover {
+  background-color: #b71c1c;
+}
+
+.login-option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    color: black;
+    text-align: center;
+    /* width: 240px; */
+    background-color: rgb(255, 200, 0);
+    font-weight: 600;
+}
+
+.login-option:hover{
+    background-color: rgb(255, 170, 0);
+}
+
+.social-login{
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-radius: 6px;
+    padding: 0 10px;
+}
+
+.google {
+    background-color: rgb(219, 68, 55);
+}
+.google:hover {
+    background-color: rgb(194, 57, 43);
+    color: white;
+}
+
+.facebook {
+    background-color: rgb(27, 76, 226);
+}
+.facebook:hover {
+    background-color: rgb(16, 63, 205);
+    color: white;
+}
+
+.cart{
+    text-decoration: none;
+    color: rgb(41, 40, 40);
+    font-weight: bold;
+    /* padding: 10px 16px; */
+}
+
+@media (max-width: 920px) {
+    .features{
+        padding: 20px 20px;
+    }
+    .search{
+        width: 100%;
+    }
+    .dropdown .dropdown-content{
+        width: 100%;
+    }
+}
