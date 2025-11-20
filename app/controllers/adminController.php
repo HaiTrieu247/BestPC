@@ -207,4 +207,8 @@ class AdminController {
     public function getTypeName($typeId){
         return $this->productModel->convertToType($typeId);
     }
+
+    public function hideProduct($id){
+        $this->productModel->hideProduct($id);
+    }
 }

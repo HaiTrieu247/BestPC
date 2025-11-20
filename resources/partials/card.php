@@ -35,6 +35,15 @@
                         </button>
                     <?php endif; ?>
                 </form>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                    <form action="index.php?route=hide-product" method="post" class="mt-2">
+                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($Pid); ?>">
+                        <input type="hidden" name="redirect_to" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+                        <button type="submit" class="btn btn-outline-danger w-100" onclick="return confirm('Are you sure you want to delete this product?');">
+                            Hide Product
+                        </button>
+                    </form>
+                <?php endif; ?>
             </div>
         </div>
     </div>

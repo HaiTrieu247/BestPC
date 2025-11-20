@@ -29,7 +29,7 @@
             include __DIR__ .'/partials/edit-product-stock.php';
         }
         ?>
-        <div class="container">
+        <div class="container mt-2 pt-2">
             <div class="d-grid gap-4" style="grid-template-columns: 1fr 2fr;">
                 <div>
                     <img src="/mywebsite/storage/uploads/<?php echo htmlspecialchars($image); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($name); ?>" class="img-fluid">

@@ -266,6 +266,16 @@ switch ($route) {
             exit();
         }
         break;
+    case 'hide-product':
+        include __DIR__ . '/../app/controllers/adminController.php';
+        $controller = new AdminController($pdo);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            $controller->hideProduct($id);
+            header("Location: " . ($_POST['redirect_to'] ?? 'index.php?route=home'));
+            exit();
+        }
+        break;
     case 'search':
         include __DIR__ . '/../app/controllers/searchController.php';
         $controller = new SearchController($pdo);

@@ -15,7 +15,16 @@ class ProductModel {
     public function getAllProducts() {
         $total = $this->countProducts();
 
-        $stmt = $this->pdo->prepare("SELECT * FROM products");
+        $stmt = $this->pdo->prepare("
+            SELECT 
+                p.*,
+                COUNT(o.order_id) AS total_orders
+            FROM products p
+            LEFT JOIN orders o ON p.Pid = o.product_id
+            WHERE p.is_hidden = 0
+            GROUP BY p.Pid
+            ORDER BY total_orders DESC
+        ");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -28,7 +37,7 @@ class ProductModel {
     public function getProductsByType($type, $filterApplied, $page = 1, $PriceRange, $SortBy) {
         $limit = 8;
         $offset = ($page - 1) * $limit;
-        $sql1 = "SELECT COUNT(*) FROM products JOIN types ON products.type_id = types.Tid WHERE types.Tname = ?";
+        $sql1 = "SELECT COUNT(*) FROM products JOIN types ON products.type_id = types.Tid WHERE types.Tname = ? AND products.is_hidden = 0";
         
         $params = [$type];
 
@@ -61,7 +70,7 @@ class ProductModel {
         $stmt->execute($params);
         $total = $stmt->fetchColumn();
 
-        $sql2 = "SELECT Pname, Pimage, price, Pid FROM products JOIN types ON products.type_id = types.Tid WHERE types.Tname = ?";
+        $sql2 = "SELECT Pname, Pimage, price, Pid FROM products JOIN types ON products.type_id = types.Tid WHERE types.Tname = ? AND products.is_hidden = 0";
 
         if (!empty($filterApplied['Brand'])){
             $placeholders = implode(',', array_fill(0, count($filterApplied['Brand']), '?'));
@@ -367,5 +376,11 @@ class ProductModel {
         $stmt->bindParam(':typeId', $typeId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function hideProduct($id){
+        $stmt = $this->pdo->prepare("UPDATE products SET is_hidden = 1 WHERE Pid = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

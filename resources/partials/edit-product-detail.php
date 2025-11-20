@@ -12,6 +12,7 @@
                 <form action="index.php?route=view-detail" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="edit-product">
                     <input type="hidden" name="id" value="<?php echo htmlspecialchars($productId); ?>">
+                    <input type="hidden" name="type_id" value="<?php echo htmlspecialchars($product['type_id']); ?>">
                         <div class="mb-3">
                             <label>Name</label>
                             <input type="text" name="Pname" class="form-control" value="<?= $_POST['Pname'] ?? ($name ?? '') ?>">
