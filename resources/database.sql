@@ -57,6 +57,7 @@ CREATE TABLE products (
     manufacturer_id INT,
     brand_id INT,
     Pimage VARCHAR(255) NOT NULL,
+    is_hidden BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY (type_id) REFERENCES types(Tid),
     FOREIGN KEY (category_id) REFERENCES categories(Cid),
     FOREIGN KEY (series_id) REFERENCES series(seid),
