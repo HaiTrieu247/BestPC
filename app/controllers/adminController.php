@@ -211,4 +211,8 @@ class AdminController {
     public function hideProduct($id){
         $this->productModel->hideProduct($id);
     }
+
+    public function unhideProduct($id){
+        $this->productModel->unhideProduct($id);
+    }
 }

@@ -13,18 +13,21 @@ class ProductModel {
     }
 
     public function getAllProducts() {
-        $total = $this->countProducts();
-
-        $stmt = $this->pdo->prepare("
+        $sql = "
             SELECT 
                 p.*,
                 COUNT(o.order_id) AS total_orders
             FROM products p
             LEFT JOIN orders o ON p.Pid = o.product_id
-            WHERE p.is_hidden = 0
+        ";
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            $sql .= " WHERE p.is_hidden = 0";
+        }
+        $sql .= "            
             GROUP BY p.Pid
             ORDER BY total_orders DESC
-        ");
+            ";
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -37,8 +40,10 @@ class ProductModel {
     public function getProductsByType($type, $filterApplied, $page = 1, $PriceRange, $SortBy) {
         $limit = 8;
         $offset = ($page - 1) * $limit;
-        $sql1 = "SELECT COUNT(*) FROM products JOIN types ON products.type_id = types.Tid WHERE types.Tname = ? AND products.is_hidden = 0";
-        
+        $sql1 = "SELECT COUNT(*) FROM products JOIN types ON products.type_id = types.Tid WHERE types.Tname = ?";
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            $sql1 .= " AND products.is_hidden = 0";
+        }
         $params = [$type];
 
         if (!empty($filterApplied['Brand'])){
@@ -70,7 +75,11 @@ class ProductModel {
         $stmt->execute($params);
         $total = $stmt->fetchColumn();
 
-        $sql2 = "SELECT Pname, Pimage, price, Pid FROM products JOIN types ON products.type_id = types.Tid WHERE types.Tname = ? AND products.is_hidden = 0";
+        $sql2 = "SELECT products.* FROM products JOIN types ON products.type_id = types.Tid WHERE types.Tname = ?";
+
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            $sql2 .= " AND products.is_hidden = 0";
+        }
 
         if (!empty($filterApplied['Brand'])){
             $placeholders = implode(',', array_fill(0, count($filterApplied['Brand']), '?'));
@@ -380,6 +389,12 @@ class ProductModel {
 
     public function hideProduct($id){
         $stmt = $this->pdo->prepare("UPDATE products SET is_hidden = 1 WHERE Pid = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function unhideProduct($id){
+        $stmt = $this->pdo->prepare("UPDATE products SET is_hidden = 0 WHERE Pid = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }

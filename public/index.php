@@ -272,7 +272,17 @@ switch ($route) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'] ?? null;
             $controller->hideProduct($id);
-            header("Location: " . ($_POST['redirect_to'] ?? 'index.php?route=home'));
+            echo json_encode(['success' => true]);
+            exit();
+        }
+        break;
+    case 'unhide-product':
+        include __DIR__ . '/../app/controllers/adminController.php';
+        $controller = new AdminController($pdo);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            $controller->unhideProduct($id);
+            echo json_encode(['success' => true]);
             exit();
         }
         break;
