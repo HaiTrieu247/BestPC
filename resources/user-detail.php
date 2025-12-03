@@ -102,7 +102,7 @@
                                     <th scope="col">Price</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
-                                    <th scope="col">Date Ordered</th>
+                                    <th scope="col">Date</th>
                                     <th scope="col">Address</th>
                                     <th scope="col">Status</th>
                                 </tr>

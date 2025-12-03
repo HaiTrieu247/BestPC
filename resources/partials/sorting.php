@@ -45,7 +45,7 @@
                     value="<?php echo $activeDesc ? '' : 'price_desc'; ?>">
                     Price: High to Low
                 </button>
-                <?php if ($route === 'my-orders' || $route === 'admin-incoming-orders' || $route === 'user-detail'): ?>
+                <?php if (isset($route) && ($route === 'my-orders' || $route === 'admin-incoming-orders' || $route === 'user-detail')): ?>
                     <?php 
                     $activeAsc = isset($_GET['sortby']) && $_GET['sortby'] === 'date_desc';
                     ?>

@@ -11,17 +11,24 @@ class SearchModel {
         $limit = 8;
         $offset = ($page-1) * $limit;
 
-        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM products WHERE Pname LIKE :query OR Pdescription LIKE :query");
+        $sql = "SELECT COUNT(*) FROM products WHERE (Pname LIKE :query OR Pdescription LIKE :query)";
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            $sql .= " AND is_hidden = 0";
+        }
+        $stmt = $this->pdo->prepare($sql);
         $likeQuery = '%' . $query . '%';
         $stmt->bindParam(':query', $likeQuery, PDO::PARAM_STR);
         $stmt->execute();
         $total = $stmt->fetchColumn();
 
-        $sql = "SELECT * FROM products WHERE Pname LIKE :query OR Pdescription LIKE :query";
+        $sql = "SELECT * FROM products WHERE (Pname LIKE :query OR Pdescription LIKE :query)";
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            $sql .= " AND is_hidden = 0";
+        }
         if ($SortBy == 'price_asc') {
-            $sql .= " ORDER BY products.price ASC";
+            $sql .= " ORDER BY price ASC";
         } elseif ($SortBy == 'price_desc') {
-            $sql .= " ORDER BY products.price DESC";
+            $sql .= " ORDER BY price DESC";
         }
         $stmt = $this->pdo->prepare($sql . " LIMIT :limit OFFSET :offset");
         $stmt->bindParam(':query', $likeQuery, PDO::PARAM_STR);
@@ -38,12 +45,16 @@ class SearchModel {
     }
 
     public function searchLive($query) {
-        $stmt = $this->pdo->prepare("
+        $sql = "
             SELECT Pid, Pname, Pimage 
             FROM products 
-            WHERE Pname LIKE :q 
-            LIMIT 10
-        ");
+            WHERE Pname LIKE :q
+        ";
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            $sql .= " AND is_hidden = 0";
+        }
+        $sql .= " LIMIT 10";
+        $stmt = $this->pdo->prepare($sql);
         $like = '%' . $query . '%';
         $stmt->bindParam(':q', $like, PDO::PARAM_STR);
         $stmt->execute();
