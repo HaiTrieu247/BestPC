@@ -40,6 +40,6 @@ composer require vlucas/phpdotenv
 ---
 
 ## 4. Run the Project
- Paste the project into htdocs folder of xampp
- Open your browser and navigate to: `http://localhost/mywebsite/public`
+1. Paste the project into htdocs folder of xampp
+2. Open your browser and navigate to: `http://localhost/mywebsite/public`
 
