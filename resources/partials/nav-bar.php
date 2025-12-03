@@ -9,10 +9,10 @@
                 <a href="lienhe.html"><i class="fa-solid fa-phone"></i> Contact</a>
             </div>
         </div>
-        <div class="container p-4">
+        <div class="container">
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="index.php">LOGO</a>
+                    <a class="navbar-brand" href="index.php"><img src="/mywebsite/public/images/logo.png" alt="Logo" style="width: 100px; height: auto; padding: 0;"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -75,7 +75,7 @@
                             </li>
                             <li class="nav-item order-5 order-lg-4 position-relative">
                                 <a href="index.php?route=view-cart" class="cart nav-link position-relative">
-                                    <i class="fa-solid fa-cart-shopping"></i> Shopping Cart
+                                    <i class="fa-solid fa-cart-shopping"></i>Cart
                                     <?php if (isset($_SESSION['cart'])): ?>
                                         <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
                                             <?= count($_SESSION['cart']) ?>
