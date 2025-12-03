@@ -1,50 +1,4 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> My Website </title>
-    <link rel="shortcut icon" href="public/images/logo.png">
-    <link rel="stylesheet" href="/mywebsite/public/css/bootstrap.css">
-    <link rel="stylesheet" href="/mywebsite/public/css/style.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <style>
-        .dropdown-submenu {
-            position: relative;
-        }
-
-        .dropdown-submenu > .dropdown-menu {
-            top: 0;
-            left: 100%;
-            margin-left: -1px;
-            margin-top: -1px;
-        }
-
-        .nav-link.user-dropdown {
-            max-width: 120px;       /* Giới hạn chiều rộng */
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        .nav-link.user-dropdown .username {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            max-width: 110px; /* Chỉ thu nhỏ phần chữ, không ảnh hưởng icon hoặc caret */
-        }
-
-        .nav-link.user-dropdown::after {
-            margin-left: auto; /* Đảm bảo caret vẫn căn phải */
-        }
-    </style>
-</head>
-
-<body>
-    <header class="border-bottom sticky-top" style="background-color: white">
+<header class="border-bottom sticky-top" style="background-color: white">
         <div class="d-none d-lg-block">
             <div class="external">
                 <a href="khuyenmai.html"><i class="fa-solid fa-gift"></i> Promotion</a>
@@ -159,7 +113,3 @@
         });
     });
     </script>
-
-
-</body>
-</html>
