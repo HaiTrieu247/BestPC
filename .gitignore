@@ -9,3 +9,4 @@ composer.json
 .vscode/
 /storage/uploads
 .env
+project_report.tex
